@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Input from "./Input";
 import * as yup from "yup";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 export default function Signup() {
   const defaultState = {
@@ -16,14 +18,6 @@ export default function Signup() {
   const [errors, setErrors] = useState({ ...defaultState, terms: "" });
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  //Schema
-  // let signupSchema = yup.object().shape({
-  //   name: yup.string().required("Please provide your name."),
-  //   password: yup.string().required("Please make a new password"),
-  //   location: yup.string().optional(),
-  //   accountType: yup.string().required("Are you a seller or a buyer."),
-  //   terms: yup.boolean().oneOf([true], "Please agree to the terms and conditions."),
-  // })
   let formSchema = yup.object().shape({
     name: yup.string().required("Please provide name."),
     password: yup.string().required("Please make a new password."),
@@ -83,6 +77,11 @@ export default function Signup() {
 
   return (
     <form onSubmit={formSubmit}>
+      {/* <Link to="/">
+        <Button variant="contained">Back</Button>
+      </Link> */}
+      <Button to= "/" component={Link} variant="contained">Back</Button>
+
       <Input
         type="text"
         name="name"
@@ -118,7 +117,9 @@ export default function Signup() {
         <input name="terms" type="checkbox" onChange={inputChange} />
         Terms and Conditions
       </label>
-      <button disabled={buttonDisabled}>Submit</button>
+      <Button variant="contained" disabled={buttonDisabled}>
+        Submit
+      </Button>
     </form>
   );
 }
