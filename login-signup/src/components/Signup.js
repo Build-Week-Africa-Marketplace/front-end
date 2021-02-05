@@ -4,6 +4,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import { Grid } from "@material-ui/core";
 
 export default function Signup() {
   const defaultState = {
@@ -80,46 +81,80 @@ export default function Signup() {
       {/* <Link to="/">
         <Button variant="contained">Back</Button>
       </Link> */}
-      <Button to= "/" component={Link} variant="contained">Back</Button>
-
-      <Input
-        type="text"
-        name="name"
-        onChange={inputChange}
-        value={formState.name}
-        label="Name"
-        errors={errors}
-      />
-      <Input
-        type="password"
-        name="password"
-        onChange={inputChange}
-        value={formState.password}
-        label="Password"
-        errors={errors}
-      />
-      <Input
-        type="text"
-        name="location"
-        onChange={inputChange}
-        value={formState.location}
-        label="Location"
-        errors={errors}
-      />
-      <label htmlFor="accountType">
-        <select name="accountType" onChange={inputChange}>
-          <option value="">--Please choose an option--</option>
-          <option value="Seller">Seller</option>
-          <option value="Buyer">Buyer</option>
-        </select>
-      </label>
-      <label className="terms" htmlFor="terms">
-        <input name="terms" type="checkbox" onChange={inputChange} />
-        Terms and Conditions
-      </label>
-      <Button variant="contained" disabled={buttonDisabled}>
-        Submit
-      </Button>
+      <Grid
+        container
+        spacing={3}
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={12}>
+          <h1>Signup</h1>
+        </Grid>
+        <Grid item xs={12}>
+          <Input
+            type="text"
+            name="name"
+            onChange={inputChange}
+            value={formState.name}
+            label="Name "
+            errors={errors}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Input
+            type="password"
+            name="password"
+            onChange={inputChange}
+            value={formState.password}
+            label="Password "
+            errors={errors}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Input
+            type="text"
+            name="location"
+            onChange={inputChange}
+            value={formState.location}
+            label="Location"
+            errors={errors}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <label htmlFor="accountType">
+            <select name="accountType" onChange={inputChange}>
+              <option value="">--Please choose an option--</option>
+              <option value="Seller">Seller</option>
+              <option value="Buyer">Buyer</option>
+            </select>
+          </label>
+        </Grid>
+        <Grid item xs={12}>
+          <label className="terms" htmlFor="terms">
+            <input name="terms" type="checkbox" onChange={inputChange} />
+            Terms and Conditions
+          </label>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        direction="row"
+        justify="space-around"
+        alignItems="flex-end"
+        style={{ height: "10rem" }}
+      >
+        <Grid>
+          <Button to="/" component={Link} variant="contained">
+            Back
+          </Button>
+        </Grid>
+        <Grid>
+          <Button variant="contained" disabled={buttonDisabled}>
+            Signup
+          </Button>
+        </Grid>
+      </Grid>
     </form>
   );
 }

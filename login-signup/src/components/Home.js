@@ -1,21 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from '@material-ui/core/Button'
+import Button from "@material-ui/core/Button";
+import { Grid } from "@material-ui/core";
 
 export default function Home() {
   return (
     <div>
-      <h1>Welcome to Africa's Top Market Place</h1>
-
-      {/* <Link to= "/Login">
-      <Button size = "larger" variant="contained">Login</Button>
-      </Link> */}
-      <Button to= "/Login" component={Link} size = "large" variant="contained">Login</Button>
-
-      {/* <Link to = "/Signup">
-      <Button variant="contained">Signup</Button>
-      </Link> */}
-      <Button to= "/Signup" component={Link} size = "large" variant="contained">Signup</Button>
+      <Grid
+        container
+        direction="row"
+        justify="space-evenly"
+        alignItems="flex-end"
+        style = {{height: '400px'}}
+      >
+        <Grid
+          container
+          spacing={3}
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
+          <h1>Welcome to Africa's Top Market Place</h1>
+        </Grid>
+        <Grid>
+          <Button to="/Login" component={Link} size="large" variant="contained">
+            Login
+          </Button>
+        </Grid>
+        <Grid>
+          <Button
+            to="/Signup"
+            component={Link}
+            size="large"
+            variant="contained"
+          >
+            Signup
+          </Button>
+        </Grid>
+      </Grid>
     </div>
   );
 }
